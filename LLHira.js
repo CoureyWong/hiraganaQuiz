@@ -1,0 +1,297 @@
+const question = document.getElementById('question');
+const answer = document.getElementById('answer');
+const next = document.querySelector('.next');
+const button = document.getElementById('displayBtn');
+const menu = document.getElementById('menu');
+const overlay = document.getElementById('overlay');
+const h1 = document.querySelector('h1');
+const links = document.getElementById('links');
+const startBtn = document.getElementById('startBtn');
+const h3 = document.querySelector('h3');
+const par = document.querySelector('p');
+const midMenu = document.getElementById('mid-menu');
+const modal = document.getElementById('myModal');
+const items = document.querySelectorAll('a');
+const nextBtn = document.getElementById('nxtBtn');
+const showBtn = document.getElementById('showBtn');
+const replayBtn = document.getElementById('replayBtn');
+const resetBtn = document.getElementById('resetBtn');
+let i = 0;
+let array = [];
+const card = document.getElementsByClassName('card');
+const numOfQuestions = document.querySelector("#num-questions");
+const category = document.getElementById("category");
+let time = 30;
+let timer;
+const progressBar = document.querySelector(".progress-bar");
+const progressText = document.querySelector(".progress-text");
+const timePerQuestion = document.querySelector("#timer");
+const startScreen = document.querySelector(".start-screen");
+const quizScreen = document.querySelector(".quiz");
+let timeValue = timePerQuestion.value;
+const topBar = document.querySelector('#topBar');
+let num;
+const totalQuestions = document.querySelector(".questionTotal");
+let countQuestion = 0;
+let questionIndex = 1;
+const error = document.querySelector(".errorMsg");
+
+
+
+//get input from selection
+function getValue() {
+  let numValue = numOfQuestions.value;
+  let catValue = category.value;
+
+// get number of questions
+// get which array to add
+// shuffle array
+// fill array with only the number wanted
+
+  switch(numValue) {
+    case "10":
+    num = 10;
+    break
+    case "25":
+    num = 25;
+    break
+    case "50":
+    num = 50;
+    break
+    case "100":
+    num = 100;
+    break
+    case "all":
+    num = array.length;
+    break
+  }
+
+  switch(catValue) {
+    case "hiragana":
+      if (num != array.length) {
+      addItems(hiragana,num);
+    } else {
+      array.push(...hiragana);
+    }
+    break
+  }
+}
+
+function startQuiz(){
+  getValue();
+  getRandomElement(array);
+  console.log(array);
+  question.textContent = array[i].question;
+  answer.textContent = array[i].answer;
+  question.style.visibility = "visible";
+  startScreen.classList.add("hide");
+  quizScreen.classList.remove("hide");
+  startBtn.classList.add("hide");
+  showBtn.classList.remove("hide");
+  resetBtn.classList.remove("hide");
+  trackQuestions(questionIndex);
+  startTimer();
+}
+
+//progress bar
+function progress(value) {
+ const percentage = (value / time) * 100;
+progressBar.style.width = `${percentage}%`;
+progressText.innerHTML = `${value}`;
+}
+
+function setTimer(time){
+  timer = setInterval(() => {
+    if(timer >= 0) {
+    progress(time);
+    time--;
+  }
+  if (time <= -1){clearInterval(timer);}
+  } ,500);
+}
+
+function addItems(arr, num){
+  let showError = error.classList.remove("hide");
+  if( arr.length < num) {
+    showError;
+  } else {
+    array.push(...arr)
+    array.length = num;
+  }
+}
+
+function startTimer() {
+  setTimeout(() => {
+    time = timePerQuestion.value;
+    setTimer(time);
+    if (time == "none") {
+      topBar.classList.add("hide")
+    }
+  },1000);
+}
+
+function stopTimer(){
+  clearInterval(timer);
+}
+
+function reset() {
+  i=0;
+  countQuestion = 0;
+  questionIndex = 1;
+  array = [];
+  nextBtn.classList.add("hide");
+  showBtn.classList.add("hide");
+  startBtn.classList.remove("hide");
+  startScreen.classList.remove("hide");
+  quizScreen.classList.add("hide");
+  question.textContent = '';
+  answer.textContent = '';
+  answer.style.visibility = "hidden";
+  resetBtn.classList.add("hide");
+  replayBtn.classList.add("hide");
+  error.classList.add("hide");
+}
+
+function replay(){
+  getRandomElement(array);
+  console.log(array);
+  i=0;
+  countQuestion = 0;
+  questionIndex = 1;
+  showBtn.classList.remove("hide");
+  nextBtn.classList.add("hide");
+  replayBtn.classList.add("hide");
+  question.textContent = array[i].question;
+  answer.textContent = array[i].answer;
+  question.style.visibility = "visible";
+  totalQuestions.classList.remove("hide");
+  trackQuestions(questionIndex);
+}
+
+function play() {
+  stopTimer();
+  showAnswer();
+  i++;
+  showBtn.classList.add("hide");
+  nextBtn.classList.remove("hide");
+}
+
+function showAnswer() {
+  answer.style.visibility = "visible";
+  showBtn.classList.add("hide");
+  nextBtn.classList.remove("hide");
+}
+
+function nextItem() {
+  if (i == array.length - 1 ) {
+    nextBtn.classList.add("hide");
+    showBtn.classList.add("hide");
+    replayBtn.classList.remove("hide");
+    question.style.visibility = "hidden";
+    answer.style.visibility = "hidden";
+    totalQuestions.classList.add("hide");
+  } else {
+    i++;
+    answer.style.visibility = "hidden";
+    nextBtn.classList.add("hide");
+    showBtn.classList.remove("hide");
+    question.textContent = array[i].question;
+    answer.textContent = array[i].answer;
+    runTracker();
+    startTimer();
+  }
+}
+
+function test() {
+  getRandomElement(array);
+  console.log(array);
+  span.textContent = array[i];
+  array.shift()
+  // i++;
+}
+
+function getRandomElement(list){
+  return list.sort(() => Math.random() - .5);
+}
+
+function trackQuestions(index) {
+  totalQuestions.textContent = `${questionIndex} of ${array.length}`;
+}
+
+function showNextNumber() {
+  if(countQuestion < array.length - 1) {
+    countQuestion++;
+    questionIndex++;
+  }
+}
+
+function runTracker() {
+  showNextNumber();
+  trackQuestions(countQuestion);
+}
+
+document.addEventListener("keypress", (e)=> {
+  if (e.code == "Space"){
+    e.preventDefault();
+   showBtn.click();
+ } else if (answer.style.visibility = "visible"){
+e.preventDefault();
+   nextBtn.click();
+ }
+});
+
+startBtn.addEventListener("click", startQuiz);
+showBtn.addEventListener("click", showAnswer);
+nextBtn.addEventListener("click", nextItem);
+replayBtn.addEventListener("click", replay);
+resetBtn.addEventListener('click', reset);
+
+
+const hiragana = [
+  {question: "あ", answer: "a"},
+  {question: "い", answer: "i"},
+  {question: "う", answer: "u"},
+  {question: "え", answer: "e"},
+  {question: "お", answer: "o"},
+  {question: "か", answer: "ka"},
+  {question: "き", answer: "ki"},
+  {question: "く", answer: "ku"},
+  {question: "け", answer: "ke"},
+  {question: "こ", answer: "ko"},
+  {question: "さ", answer: "sa"},
+  {question: "し", answer: "shi"},
+  {question: "す", answer: "su"},
+  {question: "せ", answer: "se"},
+  {question: "そ", answer: "so"},
+  {question: "た", answer: "ta"},
+  {question: "ち", answer: "chi"},
+  {question: "つ", answer: "tsu"},
+  {question: "て", answer: "te"},
+  {question: "と", answer: "to"},
+  {question: "な", answer: "na"},
+  {question: "に", answer: "ni"},
+  {question: "ぬ", answer: "nu"},
+  {question: "ね", answer: "ne"},
+  {question: "の", answer: "no"},
+  {question: "は", answer: "ha"},
+  {question: "ひ", answer: "hi"},
+  {question: "ふ", answer: "fu"},
+  {question: "へ", answer: "he"},
+  {question: "ほ", answer: "ho"},
+  {question: "ま", answer: "ma"},
+  {question: "み", answer: "mi"},
+  {question: "む", answer: "mu"},
+  {question: "め", answer: "me"},
+  {question: "も", answer: "mo"},
+  {question: "や", answer: "ya"},
+  {question: "ゆ", answer: "yu"},
+  {question: "よ", answer: "yo"},
+  {question: "ら", answer: "ra"},
+  {question: "り", answer: "ri"},
+  {question: "る", answer: "ru"},
+  {question: "れ", answer: "re"},
+  {question: "ろ", answer: "ro"},
+  {question: "わ", answer: "wa"},
+  {question: "を", answer: "o"},
+  {question: "ん", answer: "n"}
+];
