@@ -74,8 +74,14 @@ function getValue() {
       array.push(...hiragana);
     }
     break
+    case "katakana":
+    if (num != array.length) {
+      addItems(katakana,num);
+    } else {
+      array.push(...katakana);
+    }
   }
-}
+} //end of get value function
 
 function startQuiz(){
   getValue();
@@ -292,6 +298,54 @@ const hiragana = [
   {question: "れ", answer: "re"},
   {question: "ろ", answer: "ro"},
   {question: "わ", answer: "wa"},
-  {question: "を", answer: "o"},
+  {question: "を", answer: "wo"},
   {question: "ん", answer: "n"}
+];
+const katakana = [
+  {question: "ア", answer: "a"},
+  {question: "イ", answer: "i"},
+  {question: "ウ", answer: "u"},
+  {question: "エ", answer: "e"},
+  {question: "オ", answer: "o"},
+  {question: "カ", answer: "ka"},
+  {question: "キ", answer: "ki"},
+  {question: "ク", answer: "ku"},
+  {question: "ケ", answer: "ke"},
+  {question: "コ", answer: "ko"},
+  {question: "サ", answer: "sa"},
+  {question: "シ", answer: "shi"},
+  {question: "ス", answer: "su"},
+  {question: "セ", answer: "se"},
+  {question: "ソ", answer: "so"},
+  {question: "タ", answer: "ta"},
+  {question: "チ", answer: "chi"},
+  {question: "ツ", answer: "tsu"},
+  {question: "テ", answer: "te"},
+  {question: "ト", answer: "to"},
+  {question: "ナ", answer: "na"},
+  {question: "ニ", answer: "ni"},
+  {question: "ヌ", answer: "nu"},
+  {question: "ネ", answer: "ne"},
+  {question: "ノ", answer: "no"},
+  {question: "ハ", answer: "ha"},
+  {question: "ヒ", answer: "hi"},
+  {question: "フ", answer: "fu"},
+  {question: "ヘ", answer: "he"},
+  {question: "ホ", answer: "ho"},
+  {question: "マ", answer: "ma"},
+  {question: "ミ", answer: "mi"},
+  {question: "ム", answer: "mu"},
+  {question: "メ", answer: "me"},
+  {question: "モ", answer: "mo"},
+  {question: "ヤ", answer: "ya"},
+  {question: "ユ", answer: "yu"},
+  {question: "ヨ", answer: "yo"},
+  {question: "ラ", answer: "ra"},
+  {question: "リ", answer: "ri"},
+  {question: "ル", answer: "ru"},
+  {question: "レ", answer: "re"},
+  {question: "ロ", answer: "ro"},
+  {question: "ワ", answer: "wa"},
+  {question: "ヲ", answer: "wo"},
+  {question: "ン ", answer: "n"}
 ];
