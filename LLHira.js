@@ -80,6 +80,13 @@ function getValue() {
     } else {
       array.push(...katakana);
     }
+    break
+    case "coreStarter":
+    if (num != array.length) {
+      addItems(coreStarter,num);
+    } else {
+      array.push(...coreStarter);
+    }
   }
 } //end of get value function
 
@@ -348,4 +355,44 @@ const katakana = [
   {question: "ワ", answer: "wa"},
   {question: "ヲ", answer: "wo"},
   {question: "ン ", answer: "n"}
+];
+const coreStarter = [
+  {question: "こわい", answer: "kowai (scary)"},
+  {question: "だいじょうぶ", answer: "daijoubu (it's okay)"},
+  {question: "でも", answer: "demo (but)"},
+  {question: "いく", answer: "iku (go)"},
+  {question: "いくぞ", answer: "ikuzo (let's go)"},
+  {question: "まって", answer: "matte (wait)"},
+  {question: "だめ", answer: "dame (no)"},
+  {question: "うれしい", answer: "ureshii (happy)"},
+  {question: "かなしい", answer: "kanashii (sad)"},
+  {question: "ありがとう", answer: "arigatou (thank you)"},
+  {question: "くる", answer: "kuru (to come)"},
+  {question: "みる", answer: "miru (to see)"},
+  {question: "きく", answer: "kiku (to hear/ask)"},
+  {question: "いう", answer: "iu (to say)"},
+  {question: "たつ", answer: "tatsu (to stand)"},
+  {question: "すわる", answer: "suwaru (to sit)"},
+  {question: "ある", answer: "aru (there is:thing) "},
+  {question: "いる", answer: "iru (there is: person)"},
+  {question: "かえる", answer: "kaeru (to return)"},
+  {question: "いたい", answer: "itai (hurts)"},
+  {question: "つよい", answer: "tsuyoi (strong)"},
+  {question: "よわい", answer: "yowai (weak)"},
+  {question: "ねむい", answer: "nemui (sleepy)"},
+  {question: "ひどい", answer: "hidoi (terrible)"},
+  {question: "たいへん", answer: "taihen (serious)"},
+  {question: "しずか", answer: "shizuka (quiet)"},
+  {question: "だいじ", answer: "daiji (important)"},
+  {question: "へいき", answer: "heiki (fine/okay)"},
+  {question: "ひと", answer: "hito (person)"},
+  {question: "こども", answer: "kodomo (child)"},
+  {question: "みんな", answer: "minna (everyone)"},
+  {question: "だれ", answer: "dare (who)"},
+  {question: "どこ", answer: "doko (where)"},
+  {question: "ここ", answer: "koko (here)"},
+  {question: "そこ", answer: "soko (there)"},
+  {question: "いえ", answer: "ie (house)"},
+  {question: "やま", answer: "yama (mountain)"},
+  {question: "みち", answer: "michi (road)"}
 ];
