@@ -87,6 +87,41 @@ function getValue() {
     } else {
       array.push(...coreStarter);
     }
+    break
+    case "initialCore":
+    if (num != array.length) {
+      addItems(initialCore,num);
+    } else {
+      array.push(...initialCore);
+    }
+    break
+    case "actions":
+    if (num != array.length) {
+      addItems(actions,num);
+    } else {
+      array.push(...actions);
+    }
+    break
+    case "feelings":
+    if (num != array.length) {
+      addItems(feelings,num);
+    } else {
+      array.push(...feelings);
+    }
+    break
+    case "people":
+    if (num != array.length) {
+      addItems(people,num);
+    } else {
+      array.push(...people);
+    }
+    break
+    case "connectors":
+    if (num != array.length) {
+      addItems(connectors,num);
+    } else {
+      array.push(...connectors);
+    }
   }
 } //end of get value function
 
@@ -395,4 +430,62 @@ const coreStarter = [
   {question: "いえ", answer: "ie (house)"},
   {question: "やま", answer: "yama (mountain)"},
   {question: "みち", answer: "michi (road)"}
+];
+const initialCore = [
+  {question: "こわい", answer: "kowai (scary)"},
+  {question: "だいじょうぶ", answer: "daijoubu (it's okay)"},
+  {question: "でも", answer: "demo (but)"},
+  {question: "いく", answer: "iku (go)"},
+  {question: "いくぞ", answer: "ikuzo (let's go)"},
+  {question: "まって", answer: "matte (wait)"},
+  {question: "だめ", answer: "dame (no)"},
+  {question: "うれしい", answer: "ureshii (happy)"},
+  {question: "かなしい", answer: "kanashii (sad)"},
+  {question: "ありがとう", answer: "arigatou (thank you)"}
+];
+const actions =[
+  {question: "くる", answer: "kuru (to come)"},
+  {question: "みる", answer: "miru (to see)"},
+  {question: "きく", answer: "kiku (to hear/ask)"},
+  {question: "いう", answer: "iu (to say)"},
+  {question: "たつ", answer: "tatsu (to stand)"},
+  {question: "すわる", answer: "suwaru (to sit)"},
+  {question: "ある", answer: "aru (there is:thing) "},
+  {question: "いる", answer: "iru (there is: person)"},
+  {question: "かえる", answer: "kaeru (to return)"}
+];
+const feelings = [
+  {question: "いたい", answer: "itai (hurts)"},
+  {question: "つよい", answer: "tsuyoi (strong)"},
+  {question: "よわい", answer: "yowai (weak)"},
+  {question: "ねむい", answer: "nemui (sleepy)"},
+  {question: "ひどい", answer: "hidoi (terrible)"},
+  {question: "たいへん", answer: "taihen (serious)"},
+  {question: "しずか", answer: "shizuka (quiet)"},
+  {question: "だいじ", answer: "daiji (important)"},
+  {question: "へいき", answer: "heiki (fine/okay)"}
+];
+const people = [
+  {question: "ひと", answer: "hito (person)"},
+  {question: "こども", answer: "kodomo (child)"},
+  {question: "みんな", answer: "minna (everyone)"},
+  {question: "だれ", answer: "dare (who)"},
+  {question: "どこ", answer: "doko (where)"},
+  {question: "ここ", answer: "koko (here)"},
+  {question: "そこ", answer: "soko (there)"},
+  {question: "いえ", answer: "ie (house)"},
+  {question: "やま", answer: "yama (mountain)"},
+  {question: "みち", answer: "michi (road)"}
+];
+const connectors = [
+  {question: "は", answer: "wa (topic marker)"},
+  {question: "が", answer: "ga (subject marker)"},
+  {question: "を", answer: "o (object marker)"},
+  {question: "に", answer: "ni (to/at)"},
+  {question: "で", answer: "de (at/by)"},
+  {question: "と", answer: "to (and/with)"},
+  {question: "も", answer: "mo (also)"},
+  {question: "から", answer: "kara (from)"},
+  {question: "まで", answer: "made (until)"},
+  {question: "ね", answer: "ne (right?)"}
 ];
